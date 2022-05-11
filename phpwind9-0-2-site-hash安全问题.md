@@ -8,11 +8,11 @@ tags: 渗透测试
 <!--more-->
 
 先导：
-1.phpwind是前些年比较流行的一个phpweb应用框架，和一般的php框架比，代码逻辑非常完善，可惜的是已经停止维护了，官网也没了，但仍然在先知计划供应链漏洞的B类厂商之列。
-2.phpwind历史漏洞中印象比较深的是利用哈希长度扩展攻击绕过身份验证的漏洞，但在最新版本中已修复。
+1.phpwind是前些年比较流行的一个phpweb应用框架，和一般的php框架比，代码逻辑非常完善，可惜的是已经停止维护了，官网也没了，但仍然在先知计划供应链漏洞的B类厂商之列。  
+2.phpwind历史漏洞中印象比较深的是利用哈希长度扩展攻击绕过身份验证的漏洞，但在最新版本中已修复。  
 3.orange大佬在realworldctf2021上的红队实战议题中提到了phpwind9，并利用了一个0day漏洞拿到目标应用phpwind的site_hash，之后在无法直接利用site_hash的情况下使用CVE-2015-0273 UAF getshell，详细内容如下
-https://www.bilibili.com/video/BV1wX4y1K7W4
-4.本文是对orange议题中前半部分的复现并扩充。
+https://www.bilibili.com/video/BV1wX4y1K7W4  
+4.本文是对orange议题中前半部分的复现并扩充。  
 
 **①encrypt函数**
 phpwind中的加密函数encrypt在src\library\Pw.php，许多数据在传输时会使用encrypt函数加密。
