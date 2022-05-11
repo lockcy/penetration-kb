@@ -231,7 +231,7 @@ if __name__ == '__main__':
 ![7.png](https://lockcy-github-io.vercel.app/2022/05/05/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/7.png)  
 重置密码进入后台后可以通过插入代码的方式getshell。  
 
-**⑦后记**
+**⑦后记**  
 1.后来想了下，这条利用链虽然比较清晰，但条件也蛮苛刻的，需要有密码的版块+管理员的email。  
 2.除了上述获取site_hash的方法外，还可以使用Phpwind中mt_rand的问题来获取site_hash，详细操作https://www.jianshu.com/p/4989b4d89d4e ，利用的原理也比较简单，phpwind应用安装时先设置一次种子，mt_rand1次，生成key时调用mt_rand10次，生成site_hash时调用8次，生成cookie_pre时调用3次，这个cookie_pre我们是可以知道的，因此获得了mt_rand的一条随机数链：  
 （0 0 0 0)*19  (x1 x1 0 61)   (x2 x2 0 61)   (x3 x3 0 61)  
