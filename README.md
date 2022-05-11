@@ -10,6 +10,7 @@ lockcy's penetration-kb
 2.实战渗透测试案例<br>
 3.部分漏洞poc<br>
 3.靶机渗透<br>
+[htb noter](https://github.com/lockcy/penetration-kb/blob/master/htb-noter.md)<br>
 4.其他安全知识<br>
 
 ## 文章基本原则
