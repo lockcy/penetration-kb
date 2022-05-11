@@ -6,6 +6,7 @@ lockcy's penetration-kb
 ## 内容
 包含但不限于<br>
 1.漏洞挖掘/漏洞研究<br>
+[phpwind9.0.2 site_hash安全问题](https://github.com/lockcy/penetration-kb/blob/master/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98.md)<br>
 2.实战渗透测试案例<br>
 3.部分漏洞poc<br>
 3.靶机渗透<br>
