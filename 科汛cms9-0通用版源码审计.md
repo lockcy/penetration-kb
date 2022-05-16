@@ -11,7 +11,7 @@ Kesioncms Version9.0通用版  asp.net/sqlserver
 后台地址为 manage/login.aspx  
 当密码和验证码同时错误时提示  
 ![1.png](https://lockcy-github-io.vercel.app/2022/05/16/%E7%A7%91%E6%B1%9Bcms9-0%E9%80%9A%E7%94%A8%E7%89%88%E6%BA%90%E7%A0%81%E5%AE%A1%E8%AE%A1/1.png)  
-当仅密码错误时提示  
+当仅验证码错误时提示  
 ![2.png](https://lockcy-github-io.vercel.app/2022/05/16/%E7%A7%91%E6%B1%9Bcms9-0%E9%80%9A%E7%94%A8%E7%89%88%E6%BA%90%E7%A0%81%E5%AE%A1%E8%AE%A1/2.png)  
 也算一个比较常见的逻辑问题了，直接用bp爆破常见密码即可，但在实际测试过程中，部分版本存在登录次数限制。  
 
