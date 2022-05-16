@@ -3,9 +3,6 @@ title: 科汛cms9.0通用版源码审计
 copyright: true
 date: 2022-05-16 16:40:42
 tags: 源码审计
-password: wybzdd@
-message: 需要密码才能看这篇文章。
-wrong_pass_message: 多试几次吧。
 ---
 Kesioncms Version9.0通用版  asp.net/sqlserver
 <!--more-->
