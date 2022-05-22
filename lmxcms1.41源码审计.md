@@ -102,6 +102,6 @@ http://localhost:8081/lmxcms1.4/admin.php?m=Template&a=editfile&dir=../flag.txt
 ```
 
 实战中限制多  
-1.前台sql注入dump出的密码哈希值无法直接爆破（有Install时随机的盐值保护），直接爆破web界面有错误次数限制。密码hash =md5(sha1(data+ random number(9位))  
+1.前台sql注入dump出的密码哈希值无法直接爆破（有Install时随机的盐值保护），直接爆破web界面有错误次数限制。密码hash=md5(sha1(data+ random number(9位))  
 2.在Mysql5.6.34版本以后由于secure_file_priv的限制又无法写马。  
 3.命令执行漏洞在后台。  
