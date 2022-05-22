@@ -12,7 +12,7 @@ c/index/TagsAction.class.php
 2.p函数对数据校验，过滤关键字+addslashes转义
 3.通过delHtml函数（strip_tag函数）去除标签对，进行一次url编码
 4.sql拼接查询
-{%asset_img 1.png%}
+![1.png](https://github.com/lockcy/penetration-kb/blob/master/pic/lmxcms1.41%E6%BA%90%E7%A0%81%E5%AE%A1%E8%AE%A1/1.png)
 {%asset_img 2.png%}
 {%asset_img 3.png%}
 数据检查后进行了一次urldecode，可以通过两次url编码绕过addslashes函数的转义
