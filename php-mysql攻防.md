@@ -117,6 +117,7 @@ $stmt->close();
 mysqli_close($mysqli);
 ```
 <h1> PDO </h1>  
+
 ```
 <?php
 
@@ -128,7 +129,6 @@ $statement = $pdo->prepare($sql);
 $statement->bindParam(1, $id);
 $statement->execute();
 
-
 $row = $statement->fetch();
 print_r($row);
 ```
@@ -139,6 +139,7 @@ PHP5.3.6 之前，使用 PDO 预处理过程如下：
 查阅一些资料发现问题所在：有些驱动不支持或有限度地支持本地预处理。如果驱动不能成功预处理当前查询，它将总是回到模拟预处理语句上。在 win 下无法禁止本地预处理，在 linux 下可以禁止。  
 
 在本地预处理生效且有编码问题的情况下，仍有受到宽字节注入的危险：  
+
 ```
 <?php
 $pdo = new PDO("mysql:host=127.0.0.1;dbname=testdb;charset=utf8",'root','123456');
@@ -155,6 +156,7 @@ $statement->execute();
 $row = $statement->fetch();
 print_r($row);
 ```
+
 ```
 id=%df%27%20or%201=1%20--%20-
 ```
