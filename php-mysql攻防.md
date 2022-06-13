@@ -133,7 +133,7 @@ $row = $statement->fetch();
 print_r($row);
 ```
 
-PHP5.3.6 之前，使用 PDO 预处理过程如下：    
+PHP5.3.6 之前，使用 PDO 预处理过程如下：      
 ![1.png](https://lockcy-github-io.vercel.app/2022/06/14/php-mysql%E6%94%BB%E9%98%B2/1.png)    
 以一种本地预处理的方式向远程服务器提交查询信息，信息还是在本地组装成字符串后向mysql服务器请求；使用 $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); 禁止本地预处理无效。  
 查阅一些资料发现问题所在：有些驱动不支持或有限度地支持本地预处理。如果驱动不能成功预处理当前查询，它将总是回到模拟预处理语句上。在 win 下无法禁止本地预处理，在 linux 下可以禁止。  
@@ -178,10 +178,10 @@ php5.3.6 及之后的版本预处理过程如下
 
 **最好设置 $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);  避免本地预处理**  
 **若使用 php 5.3.6+ , 请在在 PDO 的 DSN 中指定 charset 属性**  
-**宽字节注入危害还是很大的**  
+**宽字节注入危害还是很大的**   
 
 
-https://segmentfault.com/a/1190000008117968
-https://www.iteye.com/blog/zhangxugg-163-com-1835721
-https://xz.aliyun.com/t/3950
-https://www.freebuf.com/articles/web/216336.html
+https://segmentfault.com/a/1190000008117968  
+https://www.iteye.com/blog/zhangxugg-163-com-1835721  
+https://xz.aliyun.com/t/3950  
+https://www.freebuf.com/articles/web/216336.html  
