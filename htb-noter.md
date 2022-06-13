@@ -62,7 +62,7 @@ cat /home/svc/user.txt
 **3.提权**
 上传pspy64看下进程，没什么可疑的，跑下linpeas，尝试了一番也没啥结果，这时想起了mysql用户名密码，udf一下。  
 这里刚开始犯蠢了，直奔插件目录/usr/lib/x86_64-linux-gnu/mariadb19/plugin/ 想上传udf可执行程序，发现没有权限，想了一段时间，后来发现直接用mysql root用户往该目录里二进制dump即可。  
-https://github.com/lockcy/penetration-kb/blob/master/htb-noter/linux32udf.py
+https://github.com/lockcy/penetration-kb/blob/master/script/linux32udf.py
 ```
 python linux32udf.py --username root --password Nildogg36
 ./sh -p
