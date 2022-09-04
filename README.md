@@ -15,6 +15,7 @@ lockcy's penetration-kb
 [htb noter](https://github.com/lockcy/penetration-kb/blob/master/htb-noter.md)  
 [hmv messages](https://github.com/lockcy/penetration-kb/blob/master/hmv-messages.md)  
 - [x] 安全分享   
+[lua-web-vulnerability](https://github.com/lockcy/lua-web-vulnerability)  
 [php-mysql攻防](https://github.com/lockcy/penetration-kb/blob/master/php-mysql攻防.md)  
 
 ## 文章基本原则
